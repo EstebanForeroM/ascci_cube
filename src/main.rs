@@ -1,6 +1,6 @@
 use screen::Pixel;
 
-mod screen;
+pub mod screen;
 mod line_renderer;
 mod matrix_operations;
 mod matrix_generation;
