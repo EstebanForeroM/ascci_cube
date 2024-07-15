@@ -3,6 +3,8 @@ use screen::Pixel;
 mod screen;
 mod line_renderer;
 mod matrix_operations;
+mod matrix_generation;
+mod geomtry_3d;
 
 fn main() {
 
