@@ -37,6 +37,10 @@ pub fn show_pixel_matrix(matrix: &Vec<Vec<Pixel>>) {
     }   
 }
 
+pub fn clean_screen() {
+    print!("\x1B[2J\x1B[H");
+}
+
 #[cfg(test)]
 mod test {
     use super::*;

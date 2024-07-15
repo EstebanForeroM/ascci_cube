@@ -1,4 +1,4 @@
-fn matrix_calculation(matrix: [[f64; 3]; 3], vec: [f64; 3]) -> [f64; 3] {
+pub fn matrix_calculation(matrix: &[[f64; 3]; 3], vec: [f64; 3]) -> [f64; 3] {
     let mut result_vec = [0.; 3];
     let mut third_arr = [0.; 3];
     let mut second_arr = [0.; 3];

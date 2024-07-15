@@ -8,21 +8,31 @@ pub fn line_renderer(matrix: &mut Vec<Vec<Pixel>>, points: [[f64; 3]; 2]) {
     
     let y0 = point2[1];
     let x0 = point2[0];
-    println!("y0 = {y0}");
-    println!("x0 = {x0}");
 
     let m = (point1[1] - point2[1]) / (point1[0] - point2[0]);
     let b = y0 - (m * x0);
-    println!("m = {m}");
-    println!("b = {b}");
 
     let y = |x: f64| (m * x) + b;
 
     let mut total = point1[0];
     let mut other = point2[0];
 
+    if x0 == total {
+        let (lesser_y, greater_y) = if y0 > point1[1] {
+            (point1[1], y0) 
+        } else {
+            (y0, point1[1])
+        };
+
+        let mut y_actual = lesser_y;
+        while y_actual < matrix.len() as f64 && y_actual < greater_y {
+            matrix[y_actual as usize][x0 as usize] = Pixel::Full;
+            y_actual += 1.;
+        }
+        return
+    }
+
     if total < other {
-        println!("total is = {total} and other is = {other}");
     } else {
         total = point2[0];
         other = point1[0];
@@ -34,7 +44,6 @@ pub fn line_renderer(matrix: &mut Vec<Vec<Pixel>>, points: [[f64; 3]; 2]) {
         total += dx;
         let y = y(total) as usize;
 
-        println!("total = {total}, y = {y}");
         if y >= matrix.len() || total as usize > matrix[0].len() { break };
         matrix[y][total as usize] = Pixel::Full;
     }

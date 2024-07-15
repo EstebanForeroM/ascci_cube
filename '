@@ -1,0 +1,24 @@
+use line_renderer::line_renderer;
+use screen::Pixel;
+
+pub mod screen;
+mod line_renderer;
+pub mod matrix_operations;
+pub mod matrix_generation;
+mod geomtry_3d;
+
+fn main() {
+    screen_example();
+}
+
+fn screen_example() {
+    let mut pixel_matrix = screen::default_pixel_matrix(70, 250);
+    let mut cube = geomtry_3d::Cube::new(40.);
+    cube.rotate_cube([9., 0., 0.]);
+
+    for edge in cube.get_edge_list([100., 10., 0.]) {
+        line_renderer(&mut pixel_matrix, edge);
+    }
+
+    screen::show_pixel_matrix(&pixel_matrix);
+}

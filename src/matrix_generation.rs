@@ -1,6 +1,6 @@
 use std::f64::consts::PI;
 
-fn generate_rotationx_matrix(degrees: f64) -> [[f64; 3]; 3] {
+pub fn generate_rotationx_matrix(degrees: f64) -> [[f64; 3]; 3] {
     let radians = degrees * PI / 180.0;
     let cos_theta = radians.cos();
     let sin_theta = radians.sin();
@@ -12,7 +12,7 @@ fn generate_rotationx_matrix(degrees: f64) -> [[f64; 3]; 3] {
     ]
 }
 
-fn generate_rotationy_matrix(degrees: f64) -> [[f64; 3]; 3] {
+pub fn generate_rotationy_matrix(degrees: f64) -> [[f64; 3]; 3] {
     let radians = degrees * PI / 180.0;
     let cos_theta = radians.cos();
     let sin_theta = radians.sin();
@@ -24,7 +24,7 @@ fn generate_rotationy_matrix(degrees: f64) -> [[f64; 3]; 3] {
     ]
 }
 
-fn generate_rotationz_matrix(degrees: f64) -> [[f64; 3]; 3] {
+pub fn generate_rotationz_matrix(degrees: f64) -> [[f64; 3]; 3] {
     let radians = degrees * PI / 180.0;
     let cos_theta = radians.cos();
     let sin_theta = radians.sin();
